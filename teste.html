@@ -1,0 +1,79 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Teste Cloudflare</title>
+    <style>
+      body {
+        margin: 0;
+        background: #111;
+        color: #f5f5f5;
+        font-family: Arial, sans-serif;
+        padding: 32px 20px;
+      }
+      .box {
+        max-width: 720px;
+        margin: 0 auto;
+        background: #1a1a1a;
+        border: 1px solid #d9af63;
+        border-radius: 18px;
+        padding: 24px;
+      }
+      h1 {
+        margin-top: 0;
+        color: #d9af63;
+      }
+      code {
+        background: #0d0d0d;
+        padding: 4px 8px;
+        border-radius: 6px;
+      }
+      .status {
+        margin-top: 18px;
+        padding: 14px;
+        background: #171717;
+        border-radius: 10px;
+        min-height: 80px;
+      }
+      a {
+        color: #d9af63;
+      }
+    </style>
+  </head>
+  <body>
+    <div class="box">
+      <h1>Teste Cloudflare</h1>
+      <p>Se esta página estiver sendo servida pela Cloudflare Pages, as rotas abaixo devem funcionar.</p>
+
+      <p><a href="/index.html">Abrir página principal</a></p>
+      <p><a href="/admin.html">Abrir painel admin</a></p>
+
+      <div class="status" id="status">
+        Verificando rota /api/horarios...
+      </div>
+    </div>
+
+    <script>
+      async function checkApi() {
+        const status = document.getElementById('status');
+        try {
+          const res = await fetch('/api/horarios?data=2026-10-30');
+          const text = await res.text();
+          status.innerHTML = `
+            <strong>Status:</strong> ${res.status}<br>
+            <strong>Resposta:</strong><br>
+            <code>${text}</code>
+          `;
+        } catch (error) {
+          status.innerHTML = `
+            <strong>Erro:</strong> ${error.message}<br>
+            <span>Se apareceu aqui, provavelmente é porque a página está sendo acessada como arquivo local ou a rota da API não está funcionando no Cloudflare.</span>
+          `;
+        }
+      }
+
+      checkApi();
+    </script>
+  </body>
+</html>

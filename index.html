@@ -1,0 +1,1077 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta name="description" content="Barbearia Fidelis em Campestre-MG. Corte, barba e agendamento rápido." />
+    <title>Barbearia Fidelis | Campestre-MG</title>
+    <style>
+      :root {
+        --bg: #0d0d0f;
+        --bg-soft: #151517;
+        --panel: #17181a;
+        --panel-strong: #1f2023;
+        --line: rgba(217, 175, 99, 0.22);
+        --gold: #d9af63;
+        --gold-strong: #c7923a;
+        --gold-soft: #f1d7a0;
+        --text: #f8f4ee;
+        --muted: #d8cab0;
+        --invalid: #f0b6b6;
+        --success: #bfe7bd;
+      }
+
+      * { box-sizing: border-box; }
+
+      html, body {
+        margin: 0;
+        min-height: 100%;
+        background:
+          radial-gradient(circle at top, rgba(217, 175, 99, 0.10), transparent 36%),
+          linear-gradient(180deg, var(--bg) 0%, #0a0b0d 100%);
+        color: var(--text);
+        font-family: Arial, Helvetica, sans-serif;
+      }
+
+      body {
+        padding: 18px 12px 40px;
+      }
+
+      a {
+        color: inherit;
+        text-decoration: none;
+      }
+
+      img {
+        display: block;
+        max-width: 100%;
+      }
+
+      .page {
+        width: min(100%, 1180px);
+        margin: 0 auto;
+      }
+
+      .topbar {
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+        gap: 10px;
+        padding: 8px 0 18px;
+      }
+
+      .brand {
+        display: flex;
+        align-items: center;
+        gap: 10px;
+      }
+
+      .brand img {
+        width: 44px;
+        height: 44px;
+        border-radius: 12px;
+      }
+
+      .brand-name {
+        font-size: 13px;
+        letter-spacing: 0.22em;
+        font-weight: 800;
+        color: var(--gold);
+        text-transform: uppercase;
+      }
+
+      .wa-badge {
+        display: inline-flex;
+        align-items: center;
+        justify-content: center;
+        padding: 8px 12px;
+        border-radius: 999px;
+        background: var(--gold);
+        color: #171717;
+        font-size: 11px;
+        font-weight: 800;
+        letter-spacing: 0.06em;
+        text-transform: uppercase;
+      }
+
+      .hero {
+        background: linear-gradient(180deg, rgba(255,255,255,0.02), rgba(255,255,255,0));
+        border: 1px solid var(--line);
+        border-radius: 22px;
+        padding: 18px 16px 14px;
+        box-shadow: inset 0 1px 0 rgba(255,255,255,0.02);
+      }
+
+      .hero-top {
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+        gap: 12px;
+        margin-bottom: 14px;
+      }
+
+      .hero-mark {
+        font-size: 11px;
+        letter-spacing: 0.2em;
+        text-transform: uppercase;
+        color: var(--gold);
+        font-weight: 700;
+      }
+
+      .hero-logo {
+        width: 72px;
+        height: 72px;
+        border-radius: 18px;
+        object-fit: cover;
+      }
+
+      h1 {
+        margin: 0;
+        font-size: clamp(32px, 7vw, 52px);
+        line-height: 0.95;
+        letter-spacing: -0.06em;
+      }
+
+      .hero-sub {
+        color: var(--muted);
+        margin: 12px 0 16px;
+        font-size: 15px;
+      }
+
+      .hero-actions {
+        display: flex;
+        flex-wrap: wrap;
+        gap: 10px;
+      }
+
+      .btn {
+        display: inline-flex;
+        align-items: center;
+        justify-content: center;
+        min-height: 44px;
+        padding: 0 16px;
+        border-radius: 12px;
+        border: 1px solid var(--line);
+        font-size: 12px;
+        font-weight: 800;
+        letter-spacing: 0.08em;
+        text-transform: uppercase;
+      }
+
+      .btn-primary {
+        background: var(--gold);
+        color: #171717;
+      }
+
+      .btn-secondary {
+        border-color: rgba(217,184,138,0.3);
+        color: var(--gold);
+        background: rgba(217,184,138,0.04);
+      }
+
+      .info-strip {
+        display: grid;
+        grid-template-columns: 1fr 1fr;
+        gap: 10px;
+        margin-top: 18px;
+      }
+
+      .mini-box {
+        background: var(--panel);
+        border: 1px solid var(--line);
+        border-radius: 16px;
+        padding: 12px 10px;
+      }
+
+      .mini-label {
+        display: block;
+        color: var(--muted);
+        font-size: 10px;
+        letter-spacing: 0.14em;
+        text-transform: uppercase;
+        margin-bottom: 6px;
+      }
+
+      .mini-value {
+        color: var(--text);
+        font-size: 13px;
+        font-weight: 700;
+      }
+
+      .section {
+        margin-top: 22px;
+      }
+
+      .section-head {
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+        gap: 12px;
+        margin-bottom: 12px;
+      }
+
+      .section-title {
+        margin: 0;
+        font-size: 14px;
+        letter-spacing: 0.18em;
+        text-transform: uppercase;
+        color: var(--gold);
+        font-weight: 800;
+      }
+
+      .gallery-grid {
+        display: grid;
+        grid-template-columns: 1fr;
+        gap: 14px;
+      }
+
+      #agendar {
+        display: grid;
+        gap: 18px;
+      }
+
+      .gallery-card {
+        display: block;
+        overflow: hidden;
+        background: var(--panel);
+        border: 1px solid var(--line);
+        border-radius: 20px;
+      }
+
+      .gallery-card img {
+        width: 100%;
+        height: 240px;
+        object-fit: cover;
+      }
+
+      .gallery-caption {
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+        gap: 12px;
+        padding: 12px 14px;
+        color: var(--muted);
+        font-size: 12px;
+        text-transform: uppercase;
+        letter-spacing: 0.12em;
+      }
+
+      .calendar-card,
+      .time-card,
+      .contact-box {
+        background: var(--panel);
+        border: 1px solid var(--line);
+        border-radius: 18px;
+        padding: 14px 12px;
+      }
+
+      .calendar-header {
+        display: grid;
+        grid-template-columns: 36px 1fr 36px;
+        align-items: center;
+        margin-bottom: 12px;
+        gap: 8px;
+      }
+
+      .calendar-nav {
+        width: 36px;
+        height: 36px;
+        border: 1px solid rgba(217,184,138,0.35);
+        background: transparent;
+        border-radius: 12px;
+        color: var(--text);
+        font-size: 28px;
+        line-height: 1;
+        cursor: pointer;
+      }
+
+      .calendar-title {
+        text-align: center;
+        font-weight: 700;
+        font-size: 15px;
+        letter-spacing: 0.04em;
+        text-transform: uppercase;
+      }
+
+      .weekdays,
+      .calendar-grid {
+        display: grid;
+        grid-template-columns: repeat(7, minmax(0, 1fr));
+        gap: 8px;
+      }
+
+      .weekdays {
+        margin-bottom: 8px;
+      }
+
+      .weekday {
+        text-align: center;
+        color: var(--muted);
+        font-size: 11px;
+        text-transform: uppercase;
+        padding: 4px 0;
+      }
+
+      .day {
+        width: 100%;
+        min-height: 42px;
+        border: 1px solid transparent;
+        border-radius: 12px;
+        background: rgba(255,255,255,0.02);
+        color: var(--text);
+        font-size: 14px;
+        cursor: pointer;
+        transition: 0.2s ease;
+      }
+
+      .day.is-muted {
+        opacity: 0.35;
+        cursor: not-allowed;
+        background: transparent;
+      }
+
+      .day.is-selected {
+        background: var(--gold);
+        color: #171717;
+        font-weight: 700;
+        border-color: var(--gold);
+      }
+
+      .day:not(.is-muted):hover {
+        border-color: rgba(217,184,138,0.45);
+      }
+
+      .time-header {
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+        gap: 8px;
+        margin-bottom: 12px;
+      }
+
+      .time-header strong {
+        font-size: 14px;
+        letter-spacing: 0.04em;
+        text-transform: uppercase;
+      }
+
+      .time-header span {
+        color: var(--muted);
+        font-size: 11px;
+      }
+
+      .time-grid {
+        display: grid;
+        grid-template-columns: repeat(2, minmax(0, 1fr));
+        gap: 10px;
+      }
+
+      .slot {
+        border: 1px solid rgba(217,184,138,0.35);
+        background: rgba(255,255,255,0.02);
+        border-radius: 12px;
+        min-height: 56px;
+        padding: 8px 10px;
+        text-align: center;
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        justify-content: center;
+        gap: 5px;
+        color: var(--text);
+        cursor: pointer;
+      }
+
+      .slot strong {
+        font-size: 15px;
+      }
+
+      .slot small {
+        font-size: 10px;
+        letter-spacing: 0.08em;
+        text-transform: uppercase;
+        color: var(--gold);
+      }
+
+      .slot.is-occupied {
+        background: rgba(255,255,255,0.02);
+        border-color: rgba(255,255,255,0.06);
+        color: rgba(255,255,255,0.38);
+        cursor: not-allowed;
+      }
+
+      .slot.is-occupied small {
+        color: var(--invalid);
+      }
+
+      .slot.is-selected {
+        background: var(--gold);
+        border-color: var(--gold);
+        color: #171717;
+      }
+
+      .slot.is-selected small {
+        color: #171717;
+      }
+
+      .slot.is-lunch {
+        grid-column: 1 / -1;
+        border-style: dashed;
+        background: rgba(255,255,255,0.01);
+        cursor: default;
+      }
+
+      .slot.is-lunch strong {
+        color: var(--muted);
+      }
+
+      .slot.is-lunch small {
+        color: var(--muted);
+      }
+
+      .helper {
+        min-height: 18px;
+        margin-top: 14px;
+        font-size: 12px;
+        color: var(--muted);
+      }
+
+      .helper.error {
+        color: var(--invalid);
+      }
+
+      .contact-box {
+        margin-top: 18px;
+      }
+
+      .contact-list {
+        display: grid;
+        gap: 12px;
+        margin-top: 12px;
+      }
+
+      .contact-item {
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+        gap: 12px;
+        flex-wrap: wrap;
+        color: var(--muted);
+        font-size: 12px;
+      }
+
+      .contact-item strong {
+        font-size: 11px;
+        letter-spacing: 0.14em;
+        text-transform: uppercase;
+        color: var(--gold);
+      }
+
+      .contact-link {
+        color: var(--gold);
+        font-weight: 700;
+      }
+
+      .modal-backdrop {
+        position: fixed;
+        inset: 0;
+        background: rgba(0,0,0,0.72);
+        display: none;
+        align-items: end;
+        justify-content: center;
+        padding: 20px 12px 24px;
+        opacity: 0;
+        pointer-events: none;
+        transition: opacity 0.2s ease;
+      }
+
+      .modal-backdrop.show {
+        display: flex;
+        opacity: 1;
+        pointer-events: auto;
+      }
+
+      .modal {
+        width: min(100%, 420px);
+        background: #171717;
+        border: 1px solid rgba(255,255,255,0.08);
+        border-radius: 22px 22px 16px 16px;
+        padding: 18px 16px 14px;
+        transform: translateY(18px);
+        transition: transform 0.2s ease;
+      }
+
+      .modal-backdrop.show .modal {
+        transform: translateY(0);
+      }
+
+      .modal-head {
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        margin-bottom: 10px;
+      }
+
+      .close-btn {
+        border: 0;
+        background: transparent;
+        color: var(--muted);
+        font-size: 26px;
+        cursor: pointer;
+      }
+
+      .modal-kicker {
+        letter-spacing: 0.18em;
+        text-transform: uppercase;
+        color: var(--gold);
+        font-size: 11px;
+        font-weight: 700;
+      }
+
+      .modal h2 {
+        margin: 4px 0 0;
+        font-size: 28px;
+        letter-spacing: -0.04em;
+      }
+
+      .modal-date {
+        margin: 16px 0 18px;
+        color: var(--muted);
+        font-size: 14px;
+      }
+
+      .field {
+        display: block;
+        margin-bottom: 14px;
+      }
+
+      .field label {
+        display: block;
+        margin-bottom: 8px;
+        color: var(--muted);
+        font-size: 12px;
+      }
+
+      .field input {
+        width: 100%;
+        border: 1px solid rgba(255,255,255,0.12);
+        background: rgba(255,255,255,0.02);
+        color: var(--text);
+        border-radius: 12px;
+        padding: 14px 12px;
+        font-size: 15px;
+      }
+
+      .field input::placeholder {
+        color: rgba(255,255,255,0.38);
+      }
+
+      .submit-btn {
+        width: 100%;
+        border: 0;
+        background: var(--gold);
+        color: #161616;
+        border-radius: 12px;
+        padding: 15px 16px;
+        font-size: 15px;
+        font-weight: 800;
+        letter-spacing: 0.02em;
+        cursor: pointer;
+      }
+
+      .form-status {
+        min-height: 18px;
+        margin-top: 12px;
+        font-size: 12px;
+      }
+
+      .form-status.error { color: var(--invalid); }
+      .form-status.success { color: var(--success); }
+
+      @media (min-width: 768px) {
+        body {
+          padding: 28px 22px 50px;
+        }
+
+        .page {
+          width: min(100%, 1180px);
+        }
+
+        .hero {
+          display: grid;
+          grid-template-columns: 1.2fr 0.8fr;
+          align-items: center;
+          gap: 18px;
+          padding: 24px 24px 20px;
+        }
+
+        .hero-top {
+          grid-column: 2;
+          justify-self: end;
+          margin-bottom: 0;
+        }
+
+        .hero > h1,
+        .hero > .hero-sub,
+        .hero > .hero-actions,
+        .hero > .info-strip {
+          grid-column: 1;
+        }
+
+        .info-strip {
+          grid-template-columns: repeat(2, minmax(0, 1fr));
+          max-width: 420px;
+        }
+
+        #agendar {
+          grid-template-columns: minmax(0, 1.3fr) minmax(0, 0.7fr);
+          align-items: start;
+        }
+
+        #agendar > .section-head {
+          grid-column: 1 / -1;
+        }
+
+        #agendar > .calendar-card {
+          grid-column: 1;
+        }
+
+        #agendar > .time-card {
+          grid-column: 2;
+          margin-top: 0;
+        }
+
+        .gallery-grid {
+          grid-template-columns: repeat(3, minmax(0, 1fr));
+        }
+
+        .gallery-card img {
+          height: 290px;
+        }
+      }
+
+      @media (max-width: 360px) {
+        .day { min-height: 38px; }
+      }
+    </style>
+  </head>
+  <body>
+    <div class="page">
+      <header class="topbar" aria-label="Cabeçalho da barbearia">
+        <div class="brand">
+          <img src="logo.png" alt="Logo Barbearia Fidelis" />
+          <span class="brand-name">Fidelis</span>
+        </div>
+        <a class="wa-badge" href="https://wa.me/553599335278" target="_blank" rel="noreferrer">WhatsApp</a>
+      </header>
+
+      <section class="hero" aria-label="Introdução da barbearia">
+        <div class="hero-top">
+          <span class="hero-mark">Campestre-MG</span>
+          <img class="hero-logo" src="logo.png" alt="Barbearia Fidelis logo" />
+        </div>
+
+        <h1>Barbearia Fidelis</h1>
+        <p class="hero-sub">Corte, barba e estilo com atendimento de 08:00 às 20:00.</p>
+
+        <div class="hero-actions">
+          <a class="btn btn-primary" href="#agendar">Agendar</a>
+          <a class="btn btn-secondary" href="https://wa.me/553599335278" target="_blank" rel="noreferrer">Falar no WhatsApp</a>
+        </div>
+
+        <div class="info-strip">
+          <div class="mini-box">
+            <span class="mini-label">Local</span>
+            <span class="mini-value">Campestre-MG</span>
+          </div>
+          <div class="mini-box">
+            <span class="mini-label">Horário</span>
+            <span class="mini-value">08:00 – 20:00</span>
+          </div>
+        </div>
+      </section>
+
+      <section class="section" aria-label="Mostruário de cortes">
+        <div class="section-head">
+          <h2 class="section-title">Mostruário</h2>
+        </div>
+
+        <div class="gallery-grid">
+          <a class="gallery-card" href="corte1.png" target="_blank" rel="noreferrer" aria-label="Ver corte 1">
+            <img src="corte1.png" alt="Corte clássico 1" />
+          </a>
+
+          <a class="gallery-card" href="corte2.png" target="_blank" rel="noreferrer" aria-label="Ver corte 2">
+            <img src="corte2.png" alt="Corte clássico 2" />
+          </a>
+
+          <a class="gallery-card" href="corte3.png" target="_blank" rel="noreferrer" aria-label="Ver corte 3">
+            <img src="corte3.png" alt="Corte clássico 3" />
+          </a>
+        </div>
+      </section>
+
+      <section id="agendar" class="section" aria-label="Agendamento">
+        <div class="section-head">
+          <h2 class="section-title">Agendar</h2>
+        </div>
+
+        <section class="calendar-card" aria-label="Calendário de agendamentos">
+          <div class="calendar-header">
+            <button id="prevMonth" class="calendar-nav" type="button" aria-label="Mês anterior">&#8249;</button>
+            <div id="calendarTitle" class="calendar-title">Outubro de 2026</div>
+            <button id="nextMonth" class="calendar-nav" type="button" aria-label="Próximo mês">&#8250;</button>
+          </div>
+
+          <div class="weekdays" aria-hidden="true">
+            <span class="weekday">Dom</span>
+            <span class="weekday">Seg</span>
+            <span class="weekday">Ter</span>
+            <span class="weekday">Qua</span>
+            <span class="weekday">Qui</span>
+            <span class="weekday">Sex</span>
+            <span class="weekday">Sáb</span>
+          </div>
+
+          <div id="calendarGrid" class="calendar-grid" aria-live="polite"></div>
+        </section>
+
+        <section class="time-card" aria-label="Horários disponíveis" style="margin-top: 18px;">
+          <div class="time-header">
+            <strong>Horários disponíveis</strong>
+            <span>Seg a sáb • 08h às 20h</span>
+          </div>
+
+          <div id="timeGrid" class="time-grid"></div>
+          <div id="timeStatus" class="helper" aria-live="polite"></div>
+        </section>
+      </section>
+
+      <section class="contact-box" aria-label="Contato e localização">
+        <div class="section-head">
+          <h2 class="section-title">Contato</h2>
+        </div>
+
+        <div class="contact-list">
+          <div class="contact-item">
+            <strong>Local</strong>
+            <span>Campestre-MG</span>
+          </div>
+
+          <div class="contact-item">
+            <strong>WhatsApp</strong>
+            <a class="contact-link" href="https://wa.me/553599335278" target="_blank" rel="noreferrer">+55 35 9933-5278</a>
+          </div>
+
+          <div class="contact-item">
+            <strong>Instagram</strong>
+            <a class="contact-link" href="https://www.instagram.com/_barbeariafidelis_" target="_blank" rel="noreferrer">@_barbeariafidelis_</a>
+          </div>
+        </div>
+      </section>
+    </div>
+
+    <div id="modalBackdrop" class="modal-backdrop" aria-hidden="true">
+      <div class="modal" role="dialog" aria-modal="true" aria-labelledby="modalTitle">
+        <div class="modal-head">
+          <span class="modal-kicker">SÓ MAIS UM PASSO</span>
+          <button id="closeModal" class="close-btn" type="button" aria-label="Fechar">×</button>
+        </div>
+
+        <h2 id="modalTitle">Seus dados</h2>
+        <p id="modalDate" class="modal-date"></p>
+
+        <form id="bookingForm">
+          <div class="field">
+            <label for="nome">Seu nome</label>
+            <input id="nome" type="text" placeholder="Rafael Martins" maxlength="80" required />
+          </div>
+
+          <div class="field">
+            <label for="whatsapp">Celular / WhatsApp</label>
+            <input id="whatsapp" type="tel" placeholder="(11) 99999-9999" maxlength="20" required />
+          </div>
+
+          <button class="submit-btn" type="submit">Confirmar agendamento →</button>
+          <div id="formStatus" class="form-status" aria-live="polite"></div>
+        </form>
+      </div>
+    </div>
+
+    <script>
+      const monthNames = ['Janeiro','Fevereiro','Março','Abril','Maio','Junho','Julho','Agosto','Setembro','Outubro','Novembro','Dezembro'];
+      const timeSlots = ['08:00','08:30','09:00','09:30','10:00','10:30','11:00','11:30','13:00','13:30','14:00','14:30','15:00','15:30','16:00','16:30','17:00','17:30','18:00','18:30','19:00','19:30'];
+
+      const state = {
+        currentMonth: 9,
+        currentYear: 2026,
+        selectedDate: '',
+        selectedTime: '',
+        occupied: new Set(),
+      };
+
+      const calendarTitle = document.getElementById('calendarTitle');
+      const calendarGrid = document.getElementById('calendarGrid');
+      const prevMonthBtn = document.getElementById('prevMonth');
+      const nextMonthBtn = document.getElementById('nextMonth');
+      const timeGrid = document.getElementById('timeGrid');
+      const timeStatus = document.getElementById('timeStatus');
+      const modalBackdrop = document.getElementById('modalBackdrop');
+      const closeModalBtn = document.getElementById('closeModal');
+      const modalDate = document.getElementById('modalDate');
+      const bookingForm = document.getElementById('bookingForm');
+      const formStatus = document.getElementById('formStatus');
+      const nomeInput = document.getElementById('nome');
+      const whatsappInput = document.getElementById('whatsapp');
+
+      function toDateString(date) {
+        const year = date.getFullYear();
+        const month = String(date.getMonth() + 1).padStart(2, '0');
+        const day = String(date.getDate()).padStart(2, '0');
+        return `${year}-${month}-${day}`;
+      }
+
+      function formatLongDate(dateString) {
+        const date = new Date(`${dateString}T12:00:00`);
+        const weekdays = ['Domingo','Segunda','Terça','Quarta','Quinta','Sexta','Sábado'];
+        const months = ['Janeiro','Fevereiro','Março','Abril','Maio','Junho','Julho','Agosto','Setembro','Outubro','Novembro','Dezembro'];
+        return `${weekdays[date.getDay()]}, ${date.getDate()} de ${months[date.getMonth()]}`;
+      }
+
+      function setModalVisible(visible) {
+        modalBackdrop.classList.toggle('show', visible);
+        modalBackdrop.setAttribute('aria-hidden', String(!visible));
+      }
+
+      function renderCalendar() {
+        const { currentMonth, currentYear } = state;
+        calendarTitle.textContent = `${monthNames[currentMonth]} de ${currentYear}`;
+        calendarGrid.innerHTML = '';
+
+        const firstDay = new Date(currentYear, currentMonth, 1);
+        const totalDays = new Date(currentYear, currentMonth + 1, 0).getDate();
+        const leading = firstDay.getDay();
+        const today = new Date();
+        today.setHours(0, 0, 0, 0);
+
+        for (let i = 0; i < leading; i += 1) {
+          const filler = document.createElement('div');
+          filler.className = 'day is-muted';
+          filler.setAttribute('aria-hidden', 'true');
+          calendarGrid.appendChild(filler);
+        }
+
+        for (let day = 1; day <= totalDays; day += 1) {
+          const date = new Date(currentYear, currentMonth, day);
+          const dateString = toDateString(date);
+          const button = document.createElement('button');
+          const isSunday = date.getDay() === 0;
+          const isPast = date < today;
+
+          button.type = 'button';
+          button.className = 'day';
+          button.textContent = String(day);
+          button.disabled = isSunday || isPast;
+
+          if (isSunday || isPast) {
+            button.classList.add('is-muted');
+          }
+
+          if (state.selectedDate === dateString) {
+            button.classList.add('is-selected');
+          }
+
+          if (!button.disabled) {
+            button.addEventListener('click', () => {
+              state.selectedDate = dateString;
+              state.selectedTime = '';
+              renderCalendar();
+              loadBookedTimes(dateString);
+            });
+          }
+
+          calendarGrid.appendChild(button);
+        }
+      }
+
+      function renderTimeGrid() {
+        timeGrid.innerHTML = '';
+
+        if (!state.selectedDate) {
+          timeStatus.textContent = 'Selecione um dia para ver os horários disponíveis.';
+          timeStatus.className = 'helper';
+          return;
+        }
+
+        const lunch = document.createElement('div');
+        lunch.className = 'slot is-lunch';
+        lunch.innerHTML = '<strong>12:00</strong><small>Almoço</small>';
+        timeGrid.appendChild(lunch);
+
+        timeSlots.forEach((slot) => {
+          const button = document.createElement('button');
+          const occupied = state.occupied.has(slot);
+          button.type = 'button';
+          button.className = 'slot';
+
+          if (occupied) {
+            button.classList.add('is-occupied');
+            button.disabled = true;
+            button.innerHTML = `<strong>${slot}</strong><small>Ocupado</small>`;
+          } else {
+            button.innerHTML = `<strong>${slot}</strong><small>Disponível</small>`;
+            if (state.selectedTime === slot) {
+              button.classList.add('is-selected');
+            }
+            button.addEventListener('click', () => {
+              state.selectedTime = slot;
+              renderTimeGrid();
+              openModal();
+            });
+          }
+
+          timeGrid.appendChild(button);
+        });
+
+        timeStatus.textContent = formatLongDate(state.selectedDate);
+        timeStatus.className = 'helper';
+      }
+
+      function isLocalFileEnvironment() {
+        return window.location.protocol === 'file:';
+      }
+
+      async function loadBookedTimes(dateString) {
+        timeStatus.textContent = 'Carregando horários...';
+        timeStatus.className = 'helper';
+
+        if (isLocalFileEnvironment()) {
+          state.occupied = new Set();
+          timeStatus.textContent = 'Este site precisa ser aberto via Cloudflare Pages ou outro servidor com Functions. O arquivo local não tem a rota /api/horarios.';
+          timeStatus.className = 'helper error';
+          return;
+        }
+
+        try {
+          const response = await fetch(`/api/horarios?data=${encodeURIComponent(dateString)}`);
+          const payload = await response.json().catch(() => ({}));
+
+          if (!response.ok) {
+            throw new Error(payload.error || 'Não foi possível carregar os horários.');
+          }
+
+          state.occupied = new Set(payload.ocupados || []);
+          renderTimeGrid();
+        } catch (error) {
+          state.occupied = new Set();
+          timeStatus.textContent = 'Não foi possível carregar os horários agora. Tente novamente.';
+          timeStatus.className = 'helper error';
+        }
+      }
+
+      function openModal() {
+        if (!state.selectedDate || !state.selectedTime) return;
+        modalDate.textContent = `${formatLongDate(state.selectedDate)} às ${state.selectedTime}`;
+        setModalVisible(true);
+        nomeInput.focus();
+      }
+
+      function closeModal() {
+        setModalVisible(false);
+        formStatus.textContent = '';
+        formStatus.className = 'form-status';
+        bookingForm.reset();
+      }
+
+      async function submitBooking(event) {
+        event.preventDefault();
+
+        if (isLocalFileEnvironment()) {
+          formStatus.textContent = 'O agendamento só funciona em um ambiente com Cloudflare Pages/Functions. Abra a URL publicada do site.';
+          formStatus.className = 'form-status error';
+          return;
+        }
+
+        if (!state.selectedDate || !state.selectedTime) {
+          formStatus.textContent = 'Selecione uma data e um horário.';
+          formStatus.className = 'form-status error';
+          return;
+        }
+
+        const nome = nomeInput.value.trim();
+        const whatsapp = whatsappInput.value.trim();
+
+        if (!nome || !whatsapp) {
+          formStatus.textContent = 'Preencha seu nome e WhatsApp.';
+          formStatus.className = 'form-status error';
+          return;
+        }
+
+        formStatus.textContent = 'Confirmando agendamento...';
+        formStatus.className = 'form-status';
+
+        try {
+          const response = await fetch('/api/agendar', {
+            method: 'POST',
+            headers: { 'Content-Type': 'application/json' },
+            body: JSON.stringify({
+              data: state.selectedDate,
+              horario: state.selectedTime,
+              nome,
+              whatsapp,
+            }),
+          });
+
+          const payload = await response.json().catch(() => ({}));
+
+          if (!response.ok) {
+            throw new Error(payload.error || 'Não foi possível confirmar o agendamento.');
+          }
+
+          formStatus.textContent = 'Agendamento confirmado!';
+          formStatus.className = 'form-status success';
+          state.occupied.add(state.selectedTime);
+          renderTimeGrid();
+
+          setTimeout(() => {
+            closeModal();
+          }, 1200);
+        } catch (error) {
+          formStatus.textContent = error.message;
+          formStatus.className = 'form-status error';
+        }
+      }
+
+      prevMonthBtn.addEventListener('click', () => {
+        state.currentMonth -= 1;
+        if (state.currentMonth < 0) {
+          state.currentMonth = 11;
+          state.currentYear -= 1;
+        }
+        renderCalendar();
+      });
+
+      nextMonthBtn.addEventListener('click', () => {
+        state.currentMonth += 1;
+        if (state.currentMonth > 11) {
+          state.currentMonth = 0;
+          state.currentYear += 1;
+        }
+        renderCalendar();
+      });
+
+      closeModalBtn.addEventListener('click', closeModal);
+      modalBackdrop.addEventListener('click', (event) => {
+        if (event.target === modalBackdrop) {
+          closeModal();
+        }
+      });
+      bookingForm.addEventListener('submit', submitBooking);
+
+      setModalVisible(false);
+      renderCalendar();
+      timeStatus.textContent = 'Selecione um dia para ver os horários disponíveis.';
+      timeStatus.className = 'helper';
+    </script>
+  </body>
+</html>
